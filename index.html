@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Meme Generator</title>
+    <link href="res/css/styles.css" rel="stylesheet">
+</head>
+	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
+<body>    
+    <div id="title">Meme Generator</div>
+    
+	<!-- Topbar with meme templates -->
+	<div id="samples" class="collappsed">
+		<ul id="sample-list" class="list">
+		</ul>
+	</div>
+
+	<!-- Content area with canvas and toolbox -->
+	<div id="image-container" class="image-container">
+		<h1 id="meme-title">Create a new meme</h1>
+
+		<!-- Workarea with canvas -->
+		<div id="workarea" class="workarea">
+				<h2 class="workarea-title">Drop Image here or chose template from left</h2>
+
+			<canvas id="meme">
+				Sorry, canvas not supported
+			</canvas>
+		</div>
+
+		<!-- Toolbox -->
+		<div id="tools" class="tools">
+			<label>Title</label><br />
+			<input id="input-title" type="text" placeholder="Title" autofocus /><br />
+
+			<label>Text</label><br />
+			<input id="input-top" type="text" class="input-text" placeholder="Text Top" /><br />
+			<input id="input-bottom" type="text" class="input-text" placeholder="Text Bottom" /><br />
+
+			<label for="input-font">Font</label><br />
+			<select id="input-font" class="meme-input">
+				<option>Impact</option>
+				<option>Comic Sans MS</option>
+			</select><br/>
+
+			<input id="input-caps" type="checkbox" class="meme-input" name="caps" checked />
+			<label for="input-caps">Caps?</label><br />
+
+			<input id="input-outline" type="checkbox" name="outline" class="meme-input" checked />
+			<label for="input-outline">Outline?</label><br />
+
+			<button id="button-create" class="button button-create" type="button">Create Meme</button>
+			<button id="button-reset" class="button button-reset" type="button">Reset</button>
+		</div>
+	</div>
+
+	<!-- Showcase for generated memes -->
+	<div id="showcase" class="shwocase">
+		<ul id="showcase-list" class="list">
+
+		</ul>
+	</div>
+	
+    <script id="memeTemplate" type="text/template">
+	    <li class="test">
+            <span class="meme-title"><%= title %></span>
+            <img class="<%= className %>" title="<%= title %>"  src="<%= url %>" data-src="<%= dataUrl %>" width="115px" height="100px"/>
+        </li>
+    </script>
+    
+    <script src="lib/jquery-2.1.1.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="src/MemeGenerator.js"></script>
+    <script src="src/MainController.js"></script>
+    <script src="src/ControlsView.js"></script>
+    <script src="src/MemeModel.js"></script>
+    <script src="src/ShowcaseView.js"></script>
+    <script src="src/MemeView.js"></script>
+    <script src="src/SamplesView.js"></script>
+
+    <script>
+	    $(function() {
+	        MemeGenerator.init();
+	    });
+    </script>
+</body>
+</html>
